@@ -26,3 +26,41 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns:  24.5% 50% 24.5%;
+  background-color: #fff;
+  color: rgb(68, 68, 68);
+  margin: auto;
+  width: 97%;
+  
+}
+
+.box {
+  background-color: r#fff;
+  
+  border-radius: 5px;
+  padding: 20px;
+  
+  font-size: 150%;
+}
+.box.a{
+  background-color: pink;
+  margin-left: 10px;
+}
+.box.b{
+  background-color:greenyellow
+}
+.box.c{
+  background-color: yellow;
+  margin-right: 15px;
+}
+.produktTable{
+ 
+  margin-top: 10px;
+}
+#prodImg{
+  
+  margin:2px;
+}
