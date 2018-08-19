@@ -2,11 +2,12 @@ import {createStore} from 'redux';
 import  { combineReducers } from 'redux';
 
 import navnReducer from'../Reducers/navnReducer';
-//import constants from './constants';
-console.log("Hva er contstants")
+import produktReducer from'../Reducers/produktReducer' ;
+import ordreReducer from '../Reducers/ordreReducer';
 
 
-const initialState ={
+
+/*const initialState ={
     inputTextAdr:"",
     inputTextNavn:'',
     navn:'',
@@ -17,7 +18,7 @@ const initialState ={
 
     },
     ordreListe:[],
-    produkter:[
+   produkter:[
         { 
         id:1,
             prodNavn:'Seilbåt',
@@ -35,9 +36,9 @@ description:'Fin fin båt'   ,
 thumbnail:'https://cdn2.rcstatic.com/images/car_images/new_images/peugeot/108_lrg.jpg'
 },
 
-    ],
+    ]
     sum:0
-}
+}*/
 
 
 
@@ -65,11 +66,15 @@ return Object.assign({},state,{items:copyOfItems});
     }
 return state;
 }*/
-const allReducers=combineReducers({
-    navn:navnReducer
+/*const allReducers=combineReducers({
+    navnReducer:navnReducer,
+    produktReducer:produktReducer,
+    ordreReducer:ordreReducer
    
+});*/
+
+const store = createStore(combineReducers({ordreReducer,navnReducer,produktReducer}));
+store.subscribe(()=>{
+    console.log("Store updated  ",store.getState())
 });
-
-const store = createStore(allReducers,initialState);
-
 export default store;

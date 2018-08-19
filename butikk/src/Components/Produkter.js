@@ -18,7 +18,7 @@ function Produkter (props) {
       
     </tr>
   </thead>
-      {props.produkter.map(produkt=>{ 
+  {props.produkter.map(produkt=>{ 
           return( 
           <tr key={produkt.id} >
           <td >{<img src={produkt.thumbnail}width="50px" height="50px" alt="Produkt bilde" id='prodImg'/> }</td>
@@ -39,9 +39,19 @@ function Produkter (props) {
 
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps produkter',state.produkter)
+    console.log('mapStateToProps produkter',state)
     return {
-       produkter:state.produkter
+      produkter:state.produktReducer.produkter
     };
   };
 export default connect(mapStateToProps)(Produkter)
+/* {props.produkter.map(produkt=>{ 
+          return( 
+          <tr key={produkt.id} >
+          <td >{<img src={produkt.thumbnail}width="50px" height="50px" alt="Produkt bilde" id='prodImg'/> }</td>
+          <td >{produkt.prodNavn}</td>
+          <td >{produkt.description}</td>
+          <td > {produkt.pris}</td>
+          </tr>
+        );
+      })}*/ 

@@ -21,11 +21,11 @@ function Ordre(props){
 
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps',state)
+    console.log('mapStateToProps ordre',state.ordreReducer)
     return {
-        navn:state.navn,
-        adresse:state.adresse,
-        sum:state.sum
+        navn:state.navnReducer.navn,
+        adresse:state.navnReducer.adresse,
+        sum:state.ordreReducer.sum
     };
   };
 export default connect(mapStateToProps)(Ordre)

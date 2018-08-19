@@ -1,18 +1,41 @@
 import React from 'react';
 import {connect }from 'react-redux';
+import NavnForm from './NavnForm'
 
 
 function Navn (props){
+
+  
+  
   return (
     <div>
-     <form>
+     <NavnForm/>
+    </div>
+  )
+}
+let kunde={
+  navn:'Gry',
+  adresse:'BØ'
+}
+
+function mapStateToProps(state){
+  console.log("Adresse log ",state)
+  return{
+navn:state.navnReducer.navn,
+adresse:state.navnReducer.adresse,
+ 
+  }
+}
+
+/**<form>
 <div className="form-group">
     <label >Navn </label>
     <input type="text" 
     className="form-control" 
     placeholder="Navn"
     value={props.navn}
-    onChange={props.inputChangeNavn}
+   
+    
     />
    
   </div>
@@ -22,45 +45,16 @@ function Navn (props){
     className="form-control"  
     placeholder="Adresse"
     value={props.adresse}
-    onChange={props.inputChangeADR}/>
+    />
   </div>
   
-  <button type="submit" className="btn btn-primary">Submit</button>
-      </form> 
-    </div>
-  )
-}
+  <button type="submit" className="btn btn-primary" onSubmit={props.onBtnClick}> Submit</button>
+      </form>  */
 
-function mapStateToProps(state){
-  return{
-navn:state.navn,
-adresse:state.adresse
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return{
-    inputChangeNavn:(evt)=>{
-      const action={
-        type:'KUNDE_INFO_NAVN',
-        payload:evt.target.value}
-        dispatch(action);
-      
-      
-    },
-
-
-    inputChangeADR:(evt)=>{
-      const action={
-        type:'KUNDE_INFO_ADR',
-        payload:evt.target.value}
-        dispatch(action)
-      }
-    }
-
-
-  }
+  
 
 
 
-export default connect (mapStateToProps,mapDispatchToProps)(Navn);
+ 
+
+export default connect (mapStateToProps)(Navn);
