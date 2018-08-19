@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect }from 'react-redux';
-import NavnForm from './NavnForm'
+import KundeForm from'./KundeForm'; 
+
 
 
 function Navn (props){
@@ -9,14 +10,11 @@ function Navn (props){
   
   return (
     <div>
-     <NavnForm/>
+     <KundeForm/>
     </div>
   )
 }
-let kunde={
-  navn:'Gry',
-  adresse:'BØ'
-}
+
 
 function mapStateToProps(state){
   console.log("Adresse log ",state)

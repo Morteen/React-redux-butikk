@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
 import  {connect }from 'react-redux';
 import PropTypes from 'prop-types';
+import {addKunde}from '../actions';
+import { bindActionCreators } from 'redux';
 
-
- class NavnForm extends Component {
+ class KundeForm extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -16,25 +16,23 @@ import PropTypes from 'prop-types';
     }
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
-        this.setState({[e.target.name]:e.target.value})
+        ///this.setState({[e.target.name]:e.target.value})
     }
     onSubmit(e){
         e.preventDefault();
         const kunde={
             navn:this.state.navn,
-            adresse:this.state.adresse
+            body:this.state.adresse
         };
-        console.log("Fra postForm onSubmit "+kunde.navn+"  "+kunde.adresse)
+        console.log("Fra postForm onsubmit "+kunde.title+"  "+kunde.adresse)
         //call action
-        //this.props.createKunde(kunde)
-       // props.onBtnClick(e);
-       
+        this.props.addKunde(kunde)
        
     }
   render() {
     return (
       <div>
-        <h1>Legg inn navn</h1>
+        <h1>Add post</h1>
         <form onSubmit={this.onSubmit}>
             <div>  
             <label className="primary">Navn</label><br/>
@@ -59,8 +57,14 @@ import PropTypes from 'prop-types';
     )
   }
 }
-NavnForm.propTypes={
-    createKunde:PropTypes.func.isRequired
-}
 
-export default connect(null)(NavnForm)
+
+
+const matchDispatchToProps = dispatch => {
+    return bindActionCreators({addKunde:addKunde}, dispatch)
+    
+
+  }
+
+
+export default connect(null,matchDispatchToProps)(KundeForm)
