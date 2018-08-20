@@ -8,9 +8,9 @@ function Ordre(props){
       <p>{props.navn}</p>
       <p>{props.adresse}</p>
       <ul>
-          <li>produkt</li>
-          <li>produkt</li>
-          <li>produkt</li>
+          {props.ordreListe.map((prod,index)=>{
+            return( <li key={index}>{prod.prodNavn}</li>) ;
+            })}
           </ul>
           <p> Sum:{props.sum}</p>
     </div>
@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
     return {
         navn:state.navnReducer.navn,
         adresse:state.navnReducer.adresse,
-        sum:state.ordreReducer.sum
+        sum:state.ordreReducer.sum,
+        ordreListe:state.ordreReducer.ordreListe
     };
   };
 export default connect(mapStateToProps)(Ordre)

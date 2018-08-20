@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import  {connect }from 'react-redux';
-import PropTypes from 'prop-types';
 import {addKunde}from '../actions';
 import { bindActionCreators } from 'redux';
 
@@ -16,26 +15,25 @@ import { bindActionCreators } from 'redux';
     }
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
-        ///this.setState({[e.target.name]:e.target.value})
+        
     }
     onSubmit(e){
         e.preventDefault();
-        const kunde={
-            navn:this.state.navn,
-            body:this.state.adresse
-        };
-        console.log("Fra postForm onsubmit "+kunde.title+"  "+kunde.adresse)
-        //call action
-        this.props.addKunde(kunde)
-       
+        console.log('Onsubmit state verdier',this.state.navn+'  '+this.state.adresse)
+                //call action
+        this.props.addKunde(this.state.navn,this.state.adresse)
+        this.setState({
+            navn: '',
+            adresse:''
+          });
     }
   render() {
     return (
       <div>
-        <h1>Add post</h1>
+        <h4>Legg inn navn og adresse</h4>
         <form onSubmit={this.onSubmit}>
             <div>  
-            <label className="primary">Navn</label><br/>
+            <label >Navn</label>
             <input 
             type='text'
             name='navn'
@@ -43,7 +41,7 @@ import { bindActionCreators } from 'redux';
             onChange={this.onChange}/>
             </div>
             <div>  
-            <label className="primary">Adresse</label><br/>
+            <label ><h6>Adresse</h6></label><br/>
             <input 
             type='text'
             name='adresse'
@@ -51,7 +49,7 @@ import { bindActionCreators } from 'redux';
             onChange={this.onChange}/>
             </div>
             <br/>
-            <button className="primary" type='submit'>Submit</button>
+            <button className="btn btn-primary" type='submit'>Submit</button>
         </form>
       </div>
     )

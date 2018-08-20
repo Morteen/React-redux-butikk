@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect}from 'react-redux';
-
+import { bindActionCreators } from 'redux';
+import {addProd,addSum} from'../actions/ProduktActions'
 
 function Produkter (props) {
 
@@ -15,6 +16,8 @@ function Produkter (props) {
       <th scope="col">Navn</th>
       <th scope="col">Beskrivelse</th>
       <th scope="col">pris</th>
+      <th></th>
+      <th></th>
       
     </tr>
   </thead>
@@ -25,6 +28,13 @@ function Produkter (props) {
           <td >{produkt.prodNavn}</td>
           <td >{produkt.description}</td>
           <td > {produkt.pris}</td>
+          <td>
+
+          </td>
+          <td><button className="btn btn-succsess"
+          onClick={()=>props.addProd(produkt)}
+         
+          >Kjøp</button></td>
           </tr>
         );
       })}
@@ -44,14 +54,12 @@ const mapStateToProps = (state) => {
       produkter:state.produktReducer.produkter
     };
   };
-export default connect(mapStateToProps)(Produkter)
-/* {props.produkter.map(produkt=>{ 
-          return( 
-          <tr key={produkt.id} >
-          <td >{<img src={produkt.thumbnail}width="50px" height="50px" alt="Produkt bilde" id='prodImg'/> }</td>
-          <td >{produkt.prodNavn}</td>
-          <td >{produkt.description}</td>
-          <td > {produkt.pris}</td>
-          </tr>
-        );
-      })}*/ 
+
+  const matchDispatchToProps = dispatch => {
+    return bindActionCreators({addProd:addProd,addSum:addSum}, dispatch)
+    
+
+  }
+
+export default connect(mapStateToProps,matchDispatchToProps)(Produkter)
+ 
