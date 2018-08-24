@@ -33,7 +33,7 @@ import { bindActionCreators } from 'redux';
         <h4>Legg inn navn og adresse</h4>
         <form onSubmit={this.onSubmit}>
             <div>  
-            <label >Navn</label>
+            <label ><h5> Navn</h5></label><br/>
             <input 
             type='text'
             name='navn'
