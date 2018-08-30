@@ -19,30 +19,42 @@ import { bindActionCreators } from 'redux';
     }
     onSubmit(e){
         e.preventDefault();
-        console.log('Onsubmit state verdier',this.state.navn+'  '+this.state.adresse)
+        console.log('Onsubmit state verdier',this.state.fNavn+'  '+this.state.adresse)
                 //call action
-        this.props.addKunde(this.state.navn,this.state.adresse)
+        this.props.addKunde(this.state.fNavn,this.state.eNavn,this.state.adresse)
         this.setState({
-            navn: '',
+            eNavn: '',
+            fNavn:'',
             adresse:''
           });
     }
   render() {
     return (
-      <div>
+      <div className='well well-lg'>
         <h4>Legg inn navn og adresse</h4>
         <form onSubmit={this.onSubmit}>
-            <div>  
-            <label ><h5> Navn</h5></label><br/>
+        <div className="form-group"> 
+            <label > Fornavn</label>
             <input 
+            className="form-control"
+                        type='text'
+            name='fNavn'
+            value={this.state.fNavn}
+            onChange={this.onChange}/>
+              <label > Etternavn</label>
+            <input 
+            className="form-control"
             type='text'
-            name='navn'
-            value={this.state.navn}
+            name='eNavn'
+            value={this.state.eNavn}
             onChange={this.onChange}/>
             </div>
-            <div>  
-            <label ><h6>Adresse</h6></label><br/>
+
+
+            <div className="form-group">
+            <label >Adresse</label>
             <input 
+             className="form-control"
             type='text'
             name='adresse'
             value={this.state.adresse}

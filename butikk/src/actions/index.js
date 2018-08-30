@@ -1,10 +1,11 @@
-export const addKunde=(navn,adresse)=>{
-console.log("Du trykte på submit", navn);
+export const addKunde=(fNavn,eNavn,adresse)=>{
+console.log("Du trykte på submit", fNavn);
 const kunde={
-    navn:navn,
+    fNavn:fNavn,
+    eNavn:eNavn,
     adresse:adresse
 }
-console.log("Log av kunde i addKunde ", kunde.navn);
+console.log("Log av kunde i addKunde ", kunde.fNavn);
 return{
     
     type:'KUNDE_SUBMIT',

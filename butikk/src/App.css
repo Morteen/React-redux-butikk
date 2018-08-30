@@ -38,7 +38,7 @@
 }
 
 .box {
-  background-color: r#fff;
+  background-color: #fff;
   
   border-radius: 5px;
   padding: 20px;
@@ -63,4 +63,16 @@
 #prodImg{
   
   margin:2px;
+}
+#sumContainer{
+  width: 99%;
+  
+}
+#sumLabel{
+  float: left;
+  background-color: antiquewhite;
+}
+#sum{
+  float: right;
+  background-color: antiquewhite;
 }

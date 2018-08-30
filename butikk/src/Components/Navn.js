@@ -19,35 +19,14 @@ function Navn (props){
 function mapStateToProps(state){
   console.log("Adresse log ",state)
   return{
-navn:state.navnReducer.navn,
+fNavn:state.navnReducer.fNavn,
+eNavn:state.navnReducer.eNavn,
 adresse:state.navnReducer.adresse,
  
   }
 }
 
-/**<form>
-<div className="form-group">
-    <label >Navn </label>
-    <input type="text" 
-    className="form-control" 
-    placeholder="Navn"
-    value={props.navn}
-   
-    
-    />
-   
-  </div>
-  <div className="form-group">
-    <label >Adresse</label>
-    <input type="text" 
-    className="form-control"  
-    placeholder="Adresse"
-    value={props.adresse}
-    />
-  </div>
-  
-  <button type="submit" className="btn btn-primary" onSubmit={props.onBtnClick}> Submit</button>
-      </form>  */
+
 
   
 
