@@ -3,6 +3,7 @@ import  {connect }from 'react-redux';
 import {addKunde}from '../actions';
 import { bindActionCreators } from 'redux';
 
+
  class KundeForm extends Component {
     constructor(props){
         super(props);
@@ -33,6 +34,10 @@ import { bindActionCreators } from 'redux';
       <div className='well well-lg'>
         <h4>Legg inn navn og adresse</h4>
         <form onSubmit={this.onSubmit}>
+
+
+        
+
         <div className="form-group"> 
             <label > Fornavn</label>
             <input 

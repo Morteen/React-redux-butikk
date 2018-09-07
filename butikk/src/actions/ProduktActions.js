@@ -20,3 +20,18 @@ export function addSum(produkt) {
         payload:id
     }
   }
+  export function setProdukter(produkter){
+      return{
+          type:'SET_PRODUKTER',
+          produkter
+      }
+  }
+  export  function getProdukter(){
+    return dispatch=>{
+        fetch("http://http://localhost:4000/visProdukter")
+        .then(res=>res.json())
+        .then(data => dispatch(setProdukter(data.produkter)));
+        console.log('DATA hentet fra basen')
+       
+    }
+}

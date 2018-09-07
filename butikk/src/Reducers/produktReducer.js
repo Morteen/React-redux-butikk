@@ -47,6 +47,8 @@ antall:10
 export default function (state=initialState,action) {
     console.log("produktReduser",action)
     switch(action.type){
+        case 'SET_PRODUKTER':
+        return action.produkter 
 
         case 'DECREMENT_ANT':
         console.log("decrement kjører i reduser",action.payload)
@@ -57,6 +59,8 @@ const copyOfProdukter =state.produkter.slice();
 copyOfProdukter[action.payload-1].antall=copyOfProdukter[action.payload-1].antall-1;
 //lager en ny state
 return Object.assign({},state,{produkter:copyOfProdukter});
+
+
 
        default:return state;
         
@@ -69,5 +73,6 @@ return Object.assign({},state,{produkter:copyOfProdukter});
     
         
     }
+   
    
         

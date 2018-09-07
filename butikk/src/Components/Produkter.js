@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {connect}from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {addProd,addSum,decrementAntall} from'../actions/ProduktActions';
+import {addProd,addSum,decrementAntall,getProdukter} from'../actions/ProduktActions';
 
 
-function Produkter (props) {
+class Produkter extends Component {
+ constructor(props){
+   super(props);
+   produkter:[];
+ }
 
+     componentDidMount=()=>{
+     this.props.getProdukter();
+   }
    
-
+render(){  
   return (
     <div>
 
@@ -23,7 +30,7 @@ function Produkter (props) {
       
     </tr>
   </thead>
-  {props.produkter.map(produkt=>{ 
+  {this.props.produkter.map(produkt=>{ 
    
           return( 
            <tbody  key={produkt.id}>
@@ -35,7 +42,7 @@ function Produkter (props) {
           <td>{produkt.antall}</td>
           <td>
             <button className="btn btn-success"
-            onClick={()=>{props.addProd(produkt);props.decrementAntall(produkt.id)}}
+            onClick={()=>{this.props.addProd(produkt);this.props.decrementAntall(produkt.id)}}
          >Kjøp</button></td>
           </tr>
           </tbody> 
@@ -47,18 +54,18 @@ function Produkter (props) {
   )
 }
 
-
+}
 
 
 const mapStateToProps = (state) => {
     console.log('mapStateToProps produkter',state)
     return {
-      produkter:state.produktReducer.produkter
+     produkter:state.produktReducer.produkter
     };
   };
 
   const matchDispatchToProps = dispatch => {
-    return bindActionCreators({addProd:addProd,addSum:addSum,decrementAntall:decrementAntall}, dispatch)
+    return bindActionCreators({addProd:addProd,addSum:addSum,decrementAntall:decrementAntall,getProdukter:getProdukter}, dispatch)
     
 
   }
